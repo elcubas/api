@@ -1,22 +1,54 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="miApp">
+<html lang="es-MX" ng-app="miApp">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biofarmex Bodega</title>
-    <meta property="og:title" content="Biofarmex Bodega" />
-    <meta property="og:description" content="Descubre nuestras promociones y catálogo en Biofarmex Bodega." />
+    <meta name="description"
+        content="Venta de medicamentos y suplementos veterinarios para mascotas y ganado. Explora el catálogo y las promociones de Biofarmex Bodega para mayoristas y minoristas.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#234fb6">
+    <link rel="canonical" href="https://bioanimal.com.mx/">
+    <link rel="alternate" hreflang="es-MX" href="https://bioanimal.com.mx/">
+    <title>Medicamentos veterinarios para mascotas y ganado | Biofarmex</title>
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="Medicamentos veterinarios para mascotas y ganado | Biofarmex" />
+    <meta property="og:description"
+        content="Medicamentos, suplementos y soluciones veterinarias para mascotas y ganado. Consulta el catálogo y las promociones para mayoristas y minoristas." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lonulabs.github.io/api/" />
-    <meta property="og:image" content="images/christina-maiia-unsplash.jpg" />
-    <meta property="og:image:alt" content="Imagen destacada de Biofarmex Bodega" />
+    <meta property="og:url" content="https://bioanimal.com.mx/" />
+    <meta property="og:image" content="https://bioanimal.com.mx/images/daniel-quiceno-m-unsplash.jpg" />
+    <meta property="og:image:alt" content="Imagen de portada de Biofarmex Bodega" />
     <meta property="og:site_name" content="Biofarmex Bodega" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Biofarmex Bodega" />
-    <meta name="twitter:description" content="Descubre nuestras promociones y catálogo en Biofarmex Bodega." />
-    <meta name="twitter:image" content="images/christina-maiia-unsplash.webp" />
+    <meta name="twitter:title" content="Medicamentos veterinarios para mascotas y ganado | Biofarmex" />
+    <meta name="twitter:description"
+        content="Medicamentos, suplementos y soluciones veterinarias. Catálogo y promociones para mayoristas y minoristas." />
+    <meta name="twitter:image" content="https://bioanimal.com.mx/images/daniel-quiceno-m-unsplash.jpg" />
     <link rel="icon" href="logo.png" type="image/png">
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Biofarmex Bodega",
+            "url": "https://bioanimal.com.mx/",
+            "logo": "https://bioanimal.com.mx/logo.webp",
+            "description": "Venta de medicamentos, suplementos y soluciones veterinarias para mascotas y ganado a mayoristas y minoristas.",
+            "areaServed": [
+                {
+                    "@type": "State",
+                    "name": "Oaxaca"
+                },
+                {
+                    "@type": "City",
+                    "name": "Ciudad de México"
+                }
+            ]
+        }
+    </script>
     <!-- CSS de Angular Material v1.x -->
     <link rel="stylesheet"
         href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.10/angular-material.min.css">
@@ -25,14 +57,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body ng-controller="CarruselController" ng-cloak>
+<body class="home-page" ng-controller="CarruselController" ng-cloak>
 
     <!-- Encabezado con logo y navegación -->
     <header class="cabecera">
         <div class="logo">
-            <img src="logo.webp" alt="Logo">
+            <a href="index.html" aria-label="Biofarmex Bodega, inicio">
+                <img src="logo.webp" alt="Biofarmex Bodega">
+            </a>
         </div>
-        <nav class="nav-principal">
+        <nav class="nav-principal" aria-label="Navegación principal">
             <a href="index.html" class="active-link">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="promos.html">Promociones</a>
@@ -42,14 +76,22 @@
     </header>
 
     <!-- Contenedor Principal con Tarjeta de Angular Material -->
-    <md-content class="md-padding" layout="column" layout-align="center center">
+    <main id="contenido-principal">
+        <md-content class="md-padding" layout="column" layout-align="center center">
+
+        <section class="home-intro">
+            <h1>Medicamentos veterinarios para mascotas y ganado</h1>
+            <p>En Biofarmex Bodega encuentras medicamentos, suplementos y soluciones veterinarias, con atención a clientes mayoristas y minoristas.</p>
+        </section>
 
         <md-card class="contenedor-carrusel" md-whiteframe="4">
             <!-- Carousel viewport/track using Angular images and active index -->
             <div class="carousel-viewport" ng-mouseenter="pause()" ng-mouseleave="resume()">
                 <div class="carousel-track" ng-style="{'transform': 'translateX(-' + (active * 100) + '%)'}">
-                    <img ng-repeat="img in imageSet track by $index" ng-src="{{img}}" alt="Imagen {{$index + 1}}"
-                        class="imagen-carrusel-slide">
+                    <img ng-repeat="img in imageSet track by $index" ng-src="{{img}}"
+                        ng-attr-loading="{{$index === 0 ? 'eager' : 'lazy'}}"
+                        ng-attr-fetchpriority="{{$index === 0 ? 'high' : 'auto'}}"
+                        alt="Imagen de portada de Biofarmex Bodega" class="imagen-carrusel-slide">
                 </div>
             </div>
 
@@ -72,7 +114,7 @@
 
         <section id="promociones" class="promo-section">
             <div class="promo-header">
-                <h3>Manejamos descuentos del 30% al 50% y más</h3>
+                <h2>Manejamos descuentos del 30% al 50% y más</h2>
             </div>
             <div class="promo-header">
                 <h3>Promociones de la semana</h3>
@@ -85,7 +127,8 @@
             <div class="promo-viewport">
                 <div class="promo-track">
                     <article class="promo-card" ng-repeat="promo in promos track by $index">
-                        <img ng-src="{{getPromoImageUrl($index + 1)}}" alt="{{promo.code}} - {{promo.name}}">
+                        <img ng-src="{{getPromoImageUrl($index + 1)}}" alt="{{promo.code}} - {{promo.name}}"
+                            loading="lazy" decoding="async">
                         <div class="promo-card-body">
                             <p class="promo-label">{{promo.unit}}</p>
                             <h4>{{promo.name}}</h4>
@@ -106,7 +149,7 @@
                     max-width: 1200px;
                 }
 
-                .nosotros-home h3 {
+                .nosotros-home h2 {
                     font-size: 2.2rem;
                     color: #284abd;
                     font-weight: 700;
@@ -211,7 +254,7 @@
                 }
 
                 @media (max-width: 768px) {
-                    .nosotros-home h3 {
+                    .nosotros-home h2 {
                         font-size: 1.6rem;
                     }
 
@@ -225,7 +268,7 @@
                 }
             </style>
 
-            <h3>Vendemos un amplio surtido de medicamentos para mascotas y ganado, a mayoristas y minoristas con muy buenos precios y descuentos</h3>
+            <h2>Medicamentos para mascotas y ganado, para mayoristas y minoristas</h2>
 
             <div class="base-discount">
                 <div class="label">DESCUENTO BASE</div>
@@ -267,11 +310,12 @@
             </div>
         </section>
 
-    </md-content>
+        </md-content>
+    </main>
 
     <!-- Pie de página con enlaces -->
     <footer class="pie-pagina">
-        <nav class="nav-footer">
+        <nav class="nav-footer" aria-label="Navegación del pie de página">
             <a href="index.html" class="active-link">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="promos.html">Promociones</a>

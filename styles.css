@@ -142,6 +142,45 @@
     color: #ffffff;
 }
 
+.home-intro {
+    max-width: 900px;
+    padding: 24px 20px 8px;
+    text-align: center;
+    color: #102a5b;
+}
+
+.home-intro h1 {
+    margin: 0 0 12px;
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.home-intro p {
+    margin: 0;
+    color: #455173;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.home-page,
+.home-page #contenido-principal,
+.home-page md-content {
+    min-width: 0;
+}
+
+.home-page #contenido-principal,
+.home-page md-content {
+    width: 100%;
+}
+
+.home-page .nosotros-home {
+    width: min(100% - 32px, 1200px);
+}
+
+.home-page .nosotros-home h2 {
+    margin-top: 0;
+}
+
 .catalog-page {
     max-width: 1400px;
     margin: 30px auto;
@@ -392,6 +431,7 @@
     flex-wrap: wrap;
 }
 
+.promo-header h2,
 .promo-header h3 {
     margin: 0;
     color: #11215c;
@@ -1310,77 +1350,169 @@
         flex: 0 0 calc((100% - 22px) / 2);
         min-width: auto;
     }
+
+    .home-page .nosotros-home {
+        width: calc(100% - 32px);
+        margin: 36px auto;
+        padding: 36px 20px;
+    }
 }
 
 @media (max-width: 600px) {
     .cabecera {
-        padding: 14px 16px;
+        gap: 8px;
+        padding: 10px 12px;
     }
 
     .logo img {
-        width: 90px;
+        width: 84px;
     }
 
-    .nav-principal,
-    .nav-footer {
+    .home-page .nav-principal,
+    .home-page .nav-footer {
         width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px !important;
+    }
+
+    .home-page .nav-principal {
+        max-width: 440px;
+    }
+
+    .home-page .nav-footer {
         justify-content: center;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        gap: 1px !important;
     }
 
-    .nav-principal::-webkit-scrollbar,
-    .nav-footer::-webkit-scrollbar {
-        display: none;
+    .home-page .nav-principal a,
+    .home-page .nav-footer a {
+        display: flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 4px;
+        font-size: 0.9rem;
+        text-align: center;
+        white-space: normal;
     }
 
-    .nav-principal a,
-    .nav-footer a {
-        font-size: 0.85rem;
-        white-space: nowrap;
+    .home-page .home-intro {
+        padding: 22px 16px 4px;
     }
 
-    .contenedor-carrusel {
-        width: 100vw;
-        max-width: none;
-        margin: 16px calc(50% - 50vw);
+    .home-page .home-intro h1 {
+        font-size: clamp(1.55rem, 7vw, 2rem);
     }
 
-    .carousel-viewport {
-        max-height: 280px;
+    .home-page .home-intro p {
+        font-size: 1rem;
     }
 
-    .imagen-carrusel-slide {
+    .home-page .contenedor-carrusel {
+        width: 100%;
+        max-width: 100%;
+        margin: 16px 0;
+    }
+
+    .home-page .carousel-viewport {
+        max-height: none;
+    }
+
+    .home-page .imagen-carrusel-slide {
         height: auto;
         aspect-ratio: 16 / 9;
     }
 
-    .promo-header {
-        flex-direction: column;
-        align-items: stretch;
+    .home-page .btn-navegacion {
+        min-width: 44px;
+        min-height: 44px;
     }
 
-    .promo-nav {
+    .home-page .promo-section {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .home-page .promo-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .home-page .promo-header h2,
+    .home-page .promo-header h3 {
+        font-size: 1.35rem;
+        line-height: 1.3;
+    }
+
+    .home-page .promo-nav {
         justify-content: flex-start;
     }
 
-    .promo-card {
+    .home-page .promo-card {
         flex: 0 0 100%;
         min-width: 100%;
     }
 
-    .promo-card img {
-        height: 180px;
+    .home-page .promo-card img {
+        height: auto;
+        max-height: 220px;
+        object-fit: contain;
     }
 
-    .promo-arrow {
-        width: 38px;
-        height: 38px;
+    .home-page .promo-arrow {
+        width: 44px;
+        height: 44px;
         font-size: 1.2rem;
+    }
+
+    .home-page .nosotros-home {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+        padding: 28px 16px;
+        border-radius: 16px;
+    }
+
+    .home-page .nosotros-home h2 {
+        margin-bottom: 24px;
+        font-size: 1.45rem;
+        line-height: 1.35;
+    }
+
+    .home-page .discounts-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .home-page .discount-card,
+    .home-page .base-discount,
+    .home-page .special-offer {
+        padding: 20px 16px;
+    }
+
+    .home-page .special-offer {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .home-page .cta-link {
+        width: 100%;
+        padding: 14px 16px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .home-page .pie-pagina {
+        padding: 20px 12px;
+    }
+
+    .home-page .pie-pagina p {
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 
     .floating-cart-btn {
